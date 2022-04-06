@@ -5,22 +5,22 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 
 public class Util {
-    private static final String userName = "root";
-    private static final String password = "j0inMuse";
-    private static final String connectionURL = "jdbc:mysql://localhost:3306/kataTest";
-    private static Connection connection;
+    private static final String USERNAME = "root";
+    private static final String PASSWORD = "j0inMuse";
+    private static final String URL = "jdbc:mysql://localhost:3306/kataTest";
+    private static Connection CONNECTION;
 
     static {
         try {
-            connection = DriverManager.getConnection(connectionURL, userName, password);
-//          System.out.println("Connected");
+            CONNECTION = DriverManager.getConnection(URL, USERNAME, PASSWORD);
+
         } catch (SQLException e) {
             e.printStackTrace();
         }
     }
 
     public static Connection getConnection() {
-        return connection;
+        return CONNECTION;
     }
 
     // реализуйте настройку соеденения с БД

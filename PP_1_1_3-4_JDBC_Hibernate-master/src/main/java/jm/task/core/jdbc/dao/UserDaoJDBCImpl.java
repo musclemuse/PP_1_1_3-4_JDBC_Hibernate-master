@@ -48,7 +48,7 @@ public class UserDaoJDBCImpl implements UserDao {
     }
 
     public void removeUserById(long id) {
-        String sql = "DELETE FROM Users WHERE id IN ?";
+        String sql = "DELETE FROM Users WHERE id IN (?)";
         try (PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
             preparedStatement.setLong(1, id);
             preparedStatement.executeUpdate();
@@ -61,16 +61,18 @@ public class UserDaoJDBCImpl implements UserDao {
     public List<User> getAllUsers() {
         List<User> userList = new ArrayList<>();
         String sql = "SELECT * FROM users";
+
         try (ResultSet resultSet = connection.createStatement().executeQuery(sql)) {
             while (resultSet.next()) {
-                User user = new User(resultSet.getString("name"), resultSet.getString("lastName"), resultSet.getByte("age"));
-                user.setId(resultSet.getLong("id"));
+                User user = new User(resultSet.getString(2), resultSet.getString(3), resultSet.getByte(4));
+                user.setId(resultSet.getLong(1));
                 userList.add(user);
           //    System.out.println(user);
             }
         } catch(SQLException e) {
             e.printStackTrace();
         }
+
         return userList;
     }
 
