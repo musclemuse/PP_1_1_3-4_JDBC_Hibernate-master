@@ -13,7 +13,7 @@ public class Main {
         user.saveUser("Ilona", "Konenko", (byte) 19);
         user.removeUserById(1);
         user.getAllUsers();
-        user.cleanUsersTable();
+   //     user.cleanUsersTable();
       //  user.dropUsersTable();
 
         //Test
