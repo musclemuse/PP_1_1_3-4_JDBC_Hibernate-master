@@ -21,6 +21,7 @@ public class Main {
         //Test
         //Test2
         //Test3
+        //Test branches
         // реализуйте алгоритм здесь
     }
 }
